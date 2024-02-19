@@ -21,28 +21,18 @@ public class LeeKnow : BloonsTD6Mod
     public static ModSettingInt MonkeyMoneyAmount = new ModSettingInt(2000000) { displayName = "Monkey Money Amount" };
     public static ModSettingInt MonkeyKnowledgeAmount = new ModSettingInt(134) { displayName = "Monkey Knowledge Amount" };
     public static ModSettingInt TowerXPAmount = new ModSettingInt(1250000) { displayName = "Tower XP Amount" };
-    public static ModSettingInt PlayerXPAmount = new ModSettingInt(180000000) { displayName = "Player XP Amount" };
-    public static ModSettingInt VeteranPlayerXPAmount = new ModSettingInt(180000000) { displayName = "Player Veteran XP Amount" };
+    // public static ModSettingInt PlayerXPAmount = new ModSettingInt(180000000) { displayName = "Player XP Amount" };
+    // public static ModSettingInt VeteranPlayerXPAmount = new ModSettingInt(1800000000) { displayName = "Player Veteran XP Amount" };
     public static ModSettingInt PowersAmount = new ModSettingInt(990000000) { displayName = "Powers Amount" };
 
-    public override void OnApplicationStart()
-    {
-        MelonLogger.Msg("LeeKnowledge Loaded");
-    }
-
     [HarmonyLib.HarmonyPatch(typeof(ProfileModel), "Validate")]
+
     public class ProfileModel_Patch
     {
         [HarmonyLib.HarmonyPostfix]
         public static void Postfix(ProfileModel __instance)
         {
-            if (!Enable) return;
-
-            {
-                __instance.xp.Value = PlayerXPAmount;
-                __instance.veteranXp.Value = VeteranPlayerXPAmount;
-                __instance.veteranRank.Value = ((VeteranPlayerXPAmount - (VeteranPlayerXPAmount % 20000000)) / 20000000) + 1;
-            }
+            __instance.rank.Value = 155;
         }
     }
 
