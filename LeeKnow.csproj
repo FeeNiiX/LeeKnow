@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>LeeKnow</RootNamespace>
+        <Configurations>Debug;Release</Configurations>
+        <Nullable>enable</Nullable>
+        <AssemblyName>LeeKnow</AssemblyName>
+        <LangVersion>latest</LangVersion>
+        <Optimize>True</Optimize>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove=".github\**" />
+      <EmbeddedResource Remove=".github\**" />
+      <None Remove=".github\**" />
+    </ItemGroup>
+
+    <Import Project="btd6.targets" />
+</Project>
