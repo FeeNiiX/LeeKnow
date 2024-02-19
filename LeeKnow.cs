@@ -5,6 +5,7 @@ using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.Main;
 using Il2CppAssets.Scripts.Models.Profile;
 using BTD_Mod_Helper.Api.ModOptions;
+using Il2CppAssets.Scripts.Unity.Bridge;
 
 [assembly: MelonInfo(typeof(LeeKnow.LeeKnow), ModHelperData.Name, ModHelperData.Version, ModHelperData.RepoOwner)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
@@ -26,18 +27,17 @@ public class LeeKnow : BloonsTD6Mod
     public static ModSettingInt PowersAmount = new ModSettingInt(990000000) { displayName = "Powers Amount" };
 
     [HarmonyLib.HarmonyPatch(typeof(ProfileModel), "Validate")]
-
     public class ProfileModel_Patch
     {
         [HarmonyLib.HarmonyPostfix]
         public static void Postfix(ProfileModel __instance)
         {
+            __instance.xp.Value = 180000000;
             __instance.rank.Value = 155;
         }
     }
 
     [HarmonyLib.HarmonyPatch(typeof(MainMenu), "Open")]
-
     public class MainMenu_Patch
     {
         [HarmonyLib.HarmonyPostfix]
